@@ -1,26 +1,32 @@
-import React from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React, { ReactElement } from "react";
+import { Routes, BrowserRouter, Route } from "react-router-dom";
+import Register from "./view/Register";
+import Complete from "./view/Complete";
+import { Box, Card, CardContent } from "@mui/material";
 
-function App() {
+const App = (): ReactElement => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  )
-}
+    <BrowserRouter>
+      <Box
+        sx={{
+          display: "flex",
+          width: "100%",
+          height: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Card sx={{ minWidth: "400px" }}>
+          <CardContent>
+            <Routes>
+              <Route path="/register" element={<Register />} />
+              <Route path="/complete" element={<Complete />} />
+            </Routes>
+          </CardContent>
+        </Card>
+      </Box>
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;
