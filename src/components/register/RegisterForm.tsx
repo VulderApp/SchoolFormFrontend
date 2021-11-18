@@ -1,23 +1,31 @@
 import React, { ReactElement } from "react";
-import { Box, Button, TextField } from "@mui/material";
+import { Button, Container, TextField } from "@mui/material";
+import { SxProps } from "@mui/system";
+import { Theme } from "@mui/material/styles";
+
+const inputStyles: SxProps<Theme> = {
+  marginBottom: "20px",
+};
 
 const RegisterForm = (): ReactElement => {
   return (
-    <Box
+    <Container
       component="form"
       autoComplete="off"
       sx={{
         display: "flex",
-        margin: "5px",
         flexDirection: "column",
+        padding: "20px",
       }}
     >
-      <TextField label="Your e-mail" variant="outlined" />
-      <TextField label="School name" variant="outlined" />
-      <TextField label="School website" variant="outlined" />
-      <TextField label="School timetable" variant="outlined" />
-      <Button variant="outlined">Register</Button>
-    </Box>
+      <TextField sx={inputStyles} label="Your e-mail" variant="outlined" />
+      <TextField sx={inputStyles} label="School name" variant="outlined" />
+      <TextField sx={inputStyles} label="School website" variant="outlined" />
+      <TextField sx={inputStyles} label="School timetable" variant="outlined" />
+      <Button style={{ marginTop: "30px" }} variant="outlined">
+        Register
+      </Button>
+    </Container>
   );
 };
 
