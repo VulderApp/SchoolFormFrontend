@@ -1,10 +1,12 @@
 import React, { ReactElement } from "react";
+import { Container } from "@mui/material";
+import CompleteMessage from "../components/complete/CompleteMessage";
 
 const Complete = (): ReactElement => {
   return (
-    <div>
-      <h1>Completed</h1>
-    </div>
+    <Container>
+      <CompleteMessage />
+    </Container>
   );
 };
 
