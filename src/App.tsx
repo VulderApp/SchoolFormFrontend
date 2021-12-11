@@ -2,21 +2,23 @@ import React, { ReactElement } from "react";
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 import Register from "./view/Register";
 import Complete from "./view/Complete";
-import { Box, Card, CardContent } from "@mui/material";
+import { Container, Card, CardContent } from "@mui/material";
 
 const App = (): ReactElement => {
   return (
     <BrowserRouter>
-      <Box
+      <Container
         sx={{
           display: "flex",
-          width: "100%",
           height: "100%",
+          width: "auto",
+          minHeight: "90vh",
           justifyContent: "center",
           alignItems: "center",
+          alignSelf: "center",
         }}
       >
-        <Card sx={{ minWidth: "400px" }}>
+        <Card>
           <CardContent>
             <Routes>
               <Route path="/register" element={<Register />} />
@@ -24,7 +26,7 @@ const App = (): ReactElement => {
             </Routes>
           </CardContent>
         </Card>
-      </Box>
+      </Container>
     </BrowserRouter>
   );
 };
