@@ -5,37 +5,14 @@ import { Theme } from "@mui/material/styles";
 import { useFormik } from "formik";
 import { sendSchoolForm } from "../../api/api";
 import { useNavigate } from "react-router-dom";
+import * as Yup from "yup";
 
 const inputStyles: SxProps<Theme> = {
   marginBottom: "20px",
 };
 
-type ErrorModel = {
-  error: boolean;
-  message: string;
-};
-
 const RegisterForm = (): ReactElement => {
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
-  const [emailError, setEmailError] = React.useState<ErrorModel>({
-    error: false,
-    message: "",
-  });
-  const [schoolNameError, setSchoolNameError] = React.useState<ErrorModel>({
-    error: false,
-    message: "",
-  });
-  const [schoolWebsiteUrlError, setSchoolWebsiteUrlError] =
-    React.useState<ErrorModel>({
-      error: false,
-      message: "",
-    });
-  const [schoolTimetableUrlError, setSchoolTimetableUrlError] =
-    React.useState<ErrorModel>({
-      error: false,
-      message: "",
-    });
-
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -45,32 +22,12 @@ const RegisterForm = (): ReactElement => {
       schoolWebsiteUrl: "",
       schoolTimetableUrl: "",
     },
-    validate: (values) => {
-      if (values.email.trim() === "") {
-        setEmailError({
-          error: true,
-          message: "This field is empty",
-        });
-      }
-      if (values.schoolName.trim() === "") {
-        setSchoolNameError({
-          error: true,
-          message: "This field is empty",
-        });
-      }
-      if (values.schoolTimetableUrl.trim() === "") {
-        setSchoolWebsiteUrlError({
-          error: true,
-          message: "This field is empty",
-        });
-      }
-      if (values.schoolWebsiteUrl.trim() === "") {
-        setSchoolTimetableUrlError({
-          error: true,
-          message: "This field is empty",
-        });
-      }
-    },
+    validationSchema: Yup.object().shape({
+      email: Yup.string().email("Invalid email").required("Required"),
+      schoolName: Yup.string().min(10, "Too short!").required("Required"),
+      schoolWebsiteUrl: Yup.string().url("Invalid URL").required("Required"),
+      schoolTimetableUrl: Yup.string().url("Invalid URL").required("Required"),
+    }),
     onSubmit: async (values) => {
       const statusCode = await sendSchoolForm(
         values.email,
@@ -117,42 +74,54 @@ const RegisterForm = (): ReactElement => {
     >
       <TextField
         id="email"
+        name="email"
         type="email"
         sx={inputStyles}
-        error={emailError.error}
-        helperText={emailError.message}
         label="Your e-mail"
         variant="outlined"
+        error={formik.touched.email && formik.errors.email !== undefined}
+        helperText={formik.errors.email}
         onChange={formik.handleChange}
         value={formik.values.email}
       />
       <TextField
         id="schoolName"
+        name="schoolName"
         sx={inputStyles}
-        error={schoolNameError.error}
-        helperText={schoolNameError.message}
         label="School name"
         variant="outlined"
+        error={
+          formik.touched.schoolName && formik.errors.schoolName !== undefined
+        }
+        helperText={formik.errors.schoolName}
         onChange={formik.handleChange}
         value={formik.values.schoolName}
       />
       <TextField
         id="schoolWebsiteUrl"
+        name="schoolWebsiteUrl"
         sx={inputStyles}
-        error={schoolWebsiteUrlError.error}
-        helperText={schoolWebsiteUrlError.message}
         label="School website"
         variant="outlined"
+        error={
+          formik.touched.schoolWebsiteUrl &&
+          formik.errors.schoolWebsiteUrl !== undefined
+        }
+        helperText={formik.errors.schoolWebsiteUrl}
         onChange={formik.handleChange}
         value={formik.values.schoolWebsiteUrl}
       />
       <TextField
         id="schoolTimetableUrl"
+        name="schoolTimetableUrl"
         sx={inputStyles}
-        error={schoolTimetableUrlError.error}
-        helperText={schoolTimetableUrlError.message}
         label="School timetable"
         variant="outlined"
+        error={
+          formik.touched.schoolTimetableUrl &&
+          formik.errors.schoolTimetableUrl !== undefined
+        }
+        helperText={formik.errors.schoolTimetableUrl}
         onChange={formik.handleChange}
         value={formik.values.schoolTimetableUrl}
       />

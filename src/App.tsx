@@ -21,7 +21,7 @@ const App = (): ReactElement => {
         <Card>
           <CardContent>
             <Routes>
-              <Route path="/register" element={<Register />} />
+              <Route path="/" element={<Register />} />
               <Route path="/complete" element={<Complete />} />
             </Routes>
           </CardContent>
