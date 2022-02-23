@@ -10,7 +10,6 @@ const Message = styled("div")(({ theme }) => ({
 
 const CompleteMessage = (): ReactElement => {
   const { t } = useTranslation();
-  // const doneGif = "https://i.giphy.com/media/l0Iyl55kTeh71nTXy/giphy.webp";
 
   return (
     <Container
