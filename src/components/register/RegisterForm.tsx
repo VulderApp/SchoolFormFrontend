@@ -128,7 +128,7 @@ const RegisterForm = (): ReactElement => {
         value={formik.values.schoolTimetableUrl}
       />
       <Button style={{ marginTop: "30px" }} variant="outlined" type="submit">
-        {t("register")}
+        {t("registerButton")}
       </Button>
     </Container>
   );
