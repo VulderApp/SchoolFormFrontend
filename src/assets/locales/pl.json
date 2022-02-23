@@ -6,5 +6,6 @@
   "schoolTimetableInputLabel": "Plan lekcji szkoły (link)",
   "registerButton": "Zarejestruj",
   "backToVulder": "Wróć do aplikacji",
-  "completeSubmitMessage": "Teraz musimy przejrzeć twoje zgłoszenie, więc czekaj na maila od nas"
+  "completeSubmitTitle": "Dzięki za zgłoszenie",
+  "completeSubmitMessage": "Teraz musimy przejrzeć twoje zgłoszenie, więc oczekuj od nas maila"
 }
