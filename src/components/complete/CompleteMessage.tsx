@@ -1,7 +1,9 @@
 import React, { ReactElement } from "react";
 import { Container, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const CompleteMessage = (): ReactElement => {
+  const { t } = useTranslation();
   const doneGif = "https://i.giphy.com/media/l0Iyl55kTeh71nTXy/giphy.webp";
 
   return (
@@ -11,9 +13,7 @@ const CompleteMessage = (): ReactElement => {
       }}
     >
       <img src={doneGif} alt="done-gif" style={{ width: "80%" }} />
-      <Typography variant="h6">
-        Now, we must review your form, so wait e-mail from our team
-      </Typography>
+      <Typography variant="h6">{t("completeSubmitMessage")}</Typography>
     </Container>
   );
 };
