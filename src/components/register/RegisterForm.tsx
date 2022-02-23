@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import { sendSchoolForm } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { useTranslation } from "react-i18next";
 
 const inputStyles: SxProps<Theme> = {
   marginBottom: "20px",
@@ -14,6 +15,7 @@ const inputStyles: SxProps<Theme> = {
 const RegisterForm = (): ReactElement => {
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const formik = useFormik({
     initialValues: {
@@ -77,7 +79,7 @@ const RegisterForm = (): ReactElement => {
         name="email"
         type="email"
         sx={inputStyles}
-        label="Your e-mail"
+        label={t("emailInputLabel")}
         variant="outlined"
         error={formik.touched.email && formik.errors.email !== undefined}
         helperText={formik.errors.email}
@@ -88,7 +90,7 @@ const RegisterForm = (): ReactElement => {
         id="schoolName"
         name="schoolName"
         sx={inputStyles}
-        label="School name"
+        label={t("schoolNameInputLabel")}
         variant="outlined"
         error={
           formik.touched.schoolName && formik.errors.schoolName !== undefined
@@ -101,7 +103,7 @@ const RegisterForm = (): ReactElement => {
         id="schoolWebsiteUrl"
         name="schoolWebsiteUrl"
         sx={inputStyles}
-        label="School website"
+        label={t("schoolWebsiteInputLabel")}
         variant="outlined"
         error={
           formik.touched.schoolWebsiteUrl &&
@@ -115,7 +117,7 @@ const RegisterForm = (): ReactElement => {
         id="schoolTimetableUrl"
         name="schoolTimetableUrl"
         sx={inputStyles}
-        label="School timetable"
+        label={t("schoolTimetableInputLabel")}
         variant="outlined"
         error={
           formik.touched.schoolTimetableUrl &&
@@ -126,7 +128,7 @@ const RegisterForm = (): ReactElement => {
         value={formik.values.schoolTimetableUrl}
       />
       <Button style={{ marginTop: "30px" }} variant="outlined" type="submit">
-        Register
+        {t("register")}
       </Button>
     </Container>
   );
