@@ -1,10 +1,16 @@
 import React, { ReactElement } from "react";
-import { Container, Typography } from "@mui/material";
+import { Container, styled, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+
+const Message = styled("div")(({ theme }) => ({
+  ...theme.typography.body1,
+  fontSize: "20px",
+}));
 
 const CompleteMessage = (): ReactElement => {
   const { t } = useTranslation();
-  const doneGif = "https://i.giphy.com/media/l0Iyl55kTeh71nTXy/giphy.webp";
+  // const doneGif = "https://i.giphy.com/media/l0Iyl55kTeh71nTXy/giphy.webp";
 
   return (
     <Container
@@ -12,8 +18,9 @@ const CompleteMessage = (): ReactElement => {
         textAlign: "center",
       }}
     >
-      <img src={doneGif} alt="done-gif" style={{ width: "80%" }} />
-      <Typography variant="h6">{t("completeSubmitMessage")}</Typography>
+      <CheckCircleOutlineIcon sx={{ fontSize: "120px", color: "#228B22" }} />
+      <Typography variant="h3">{t("completeSubmitTitle")}</Typography>
+      <Message>{t("completeSubmitMessage")}</Message>
     </Container>
   );
 };
