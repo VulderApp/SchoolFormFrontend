@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const baseUrl = "https://localhost:7039";
+const baseUrl =
+  process.env.NODE_ENV === "development"
+    ? "https://localhost:7039"
+    : process.env.API_URL;
 
 export const sendSchoolForm = async (
   email: string,

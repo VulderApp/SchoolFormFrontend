@@ -2,6 +2,8 @@ import { Button, Container, Divider } from "@mui/material";
 import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 
+declare const APP_URL: string;
+
 const RegisterFooter = (): ReactElement => {
   const { t } = useTranslation();
 
@@ -15,7 +17,7 @@ const RegisterFooter = (): ReactElement => {
           justifyContent: "center",
         }}
       >
-        <Button href="#text-buttons">{t("backToVulder")}</Button>
+        <Button href={APP_URL}>{t("backToVulder")}</Button>
       </Container>
     </Container>
   );
