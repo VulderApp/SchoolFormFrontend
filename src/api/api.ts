@@ -5,7 +5,7 @@ const baseUrl =
     ? "https://localhost:7039"
     : process.env.API_URL;
 
-export const sendSchoolForm = async (
+export const submitSchoolForm = async (
   email: string,
   schoolName: string,
   schoolWebsiteUrl: string,
@@ -13,7 +13,7 @@ export const sendSchoolForm = async (
 ): Promise<number> => {
   const response = await axios.request({
     method: "POST",
-    url: "/form/SubmitSchoolForm",
+    url: "/form/submit",
     baseURL: baseUrl,
     data: {
       email,
