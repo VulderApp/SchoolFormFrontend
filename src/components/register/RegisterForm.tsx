@@ -3,7 +3,7 @@ import { Alert, Button, Container, Snackbar, TextField } from "@mui/material";
 import { SxProps } from "@mui/system";
 import { Theme } from "@mui/material/styles";
 import { useFormik } from "formik";
-import { sendSchoolForm } from "../../api/api";
+import { submitSchoolForm } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
@@ -31,7 +31,7 @@ const RegisterForm = (): ReactElement => {
       schoolTimetableUrl: Yup.string().url("Invalid URL").required("Required"),
     }),
     onSubmit: async (values) => {
-      const statusCode = await sendSchoolForm(
+      const statusCode = await submitSchoolForm(
         values.email,
         values.schoolName,
         values.schoolWebsiteUrl,
