@@ -5,8 +5,8 @@ import { Theme } from "@mui/material/styles";
 import { useFormik } from "formik";
 import { submitSchoolForm } from "../../api/api";
 import { useNavigate } from "react-router-dom";
-import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
+import * as Yup from "yup";
 
 const inputStyles: SxProps<Theme> = {
   marginBottom: "20px",
@@ -31,19 +31,24 @@ const RegisterForm = (): ReactElement => {
       schoolTimetableUrl: Yup.string().url("Invalid URL").required("Required"),
     }),
     onSubmit: async (values) => {
-      const statusCode = await submitSchoolForm(
+      const response = await submitSchoolForm(
         values.email,
         values.schoolName,
         values.schoolWebsiteUrl,
         values.schoolTimetableUrl
       );
 
-      if (statusCode === 200) {
-        navigate("/complete");
+      if (typeof response === "string") {
+        showSnackbar(response);
         return;
       }
 
-      showSnackbar(`Status code: ${statusCode.toString()}`);
+      if (response?.status !== 200) {
+        showSnackbar(response.data);
+        return;
+      }
+
+      navigate("/complete");
     },
   });
 
