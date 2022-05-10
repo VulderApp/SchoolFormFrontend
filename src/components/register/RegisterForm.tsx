@@ -27,10 +27,18 @@ const RegisterForm = (): ReactElement => {
       schoolTimetableUrl: "",
     },
     validationSchema: Yup.object().shape({
-      email: Yup.string().email("Invalid email").required("Required"),
-      schoolName: Yup.string().min(10, "Too short!").required("Required"),
-      schoolWebsiteUrl: Yup.string().url("Invalid URL").required("Required"),
-      schoolTimetableUrl: Yup.string().url("Invalid URL").required("Required"),
+      email: Yup.string()
+        .email(t("validationInvalidEmail"))
+        .required(t("validationRequired")),
+      schoolName: Yup.string()
+        .min(10, t("validationTooShort"))
+        .required(t("validationRequired")),
+      schoolWebsiteUrl: Yup.string()
+        .url(t("validationInvalidURL"))
+        .required(t("validationRequired")),
+      schoolTimetableUrl: Yup.string()
+        .url(t("validationInvalidURL"))
+        .required(t("validationRequired")),
     }),
     onSubmit: async (values) => {
       const response = await submitSchoolForm(

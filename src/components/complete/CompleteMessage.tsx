@@ -24,7 +24,7 @@ const CompleteMessage = (): ReactElement => {
         textAlign: "center",
       }}
     >
-      <CheckCircleOutlineIcon sx={{ fontSize: "8rem", color: "#228B22" }} />
+      <CheckCircleOutlineIcon sx={{ fontSize: "6rem", color: "#228B22" }} />
       <Title>{t("completeSubmitTitle")}</Title>
       <Message>{t("completeSubmitMessage")}</Message>
       <Button sx={{ padding: "0.5rem", marginTop: "1rem" }} href={APP_URL}>
