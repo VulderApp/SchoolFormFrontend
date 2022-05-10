@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { Alert, Button, Container, Snackbar, TextField } from "@mui/material";
+import { Button, Container, TextField } from "@mui/material";
 import { SxProps } from "@mui/system";
 import { Theme } from "@mui/material/styles";
 import { useFormik } from "formik";
@@ -7,13 +7,15 @@ import { submitSchoolForm } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
+import { useSetRecoilState } from "recoil";
+import { errorMessage } from "../../states";
 
 const inputStyles: SxProps<Theme> = {
   marginBottom: "20px",
 };
 
 const RegisterForm = (): ReactElement => {
-  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+  const setErrorMessage = useSetRecoilState(errorMessage);
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -39,34 +41,18 @@ const RegisterForm = (): ReactElement => {
       );
 
       if (typeof response === "string") {
-        showSnackbar(response);
+        setErrorMessage(response);
         return;
       }
 
       if (response?.status !== 200) {
-        showSnackbar(response.data);
+        setErrorMessage(response.data);
         return;
       }
 
       navigate("/complete");
     },
   });
-
-  const showSnackbar = (message: string) => {
-    const handleClose = () => setOpenSnackbar(false);
-
-    return (
-      <Snackbar
-        open={openSnackbar}
-        autoHideDuration={6000}
-        onClose={handleClose}
-      >
-        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          {message}
-        </Alert>
-      </Snackbar>
-    );
-  };
 
   return (
     <Container
