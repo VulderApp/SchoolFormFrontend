@@ -1,19 +1,21 @@
 import React, { ReactElement } from "react";
-import { Alert, Button, Container, Snackbar, TextField } from "@mui/material";
+import { Button, Container, TextField } from "@mui/material";
 import { SxProps } from "@mui/system";
 import { Theme } from "@mui/material/styles";
 import { useFormik } from "formik";
 import { submitSchoolForm } from "../../api/api";
 import { useNavigate } from "react-router-dom";
-import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
+import * as Yup from "yup";
+import { useSetRecoilState } from "recoil";
+import { errorMessage } from "../../states";
 
 const inputStyles: SxProps<Theme> = {
   marginBottom: "20px",
 };
 
 const RegisterForm = (): ReactElement => {
-  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+  const setErrorMessage = useSetRecoilState(errorMessage);
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -31,37 +33,26 @@ const RegisterForm = (): ReactElement => {
       schoolTimetableUrl: Yup.string().url("Invalid URL").required("Required"),
     }),
     onSubmit: async (values) => {
-      const statusCode = await submitSchoolForm(
+      const response = await submitSchoolForm(
         values.email,
         values.schoolName,
         values.schoolWebsiteUrl,
         values.schoolTimetableUrl
       );
 
-      if (statusCode === 200) {
-        navigate("/complete");
+      if (typeof response === "string") {
+        setErrorMessage(response);
         return;
       }
 
-      showSnackbar(`Status code: ${statusCode.toString()}`);
+      if (response?.status !== 200) {
+        setErrorMessage(response.data);
+        return;
+      }
+
+      navigate("/complete");
     },
   });
-
-  const showSnackbar = (message: string) => {
-    const handleClose = () => setOpenSnackbar(false);
-
-    return (
-      <Snackbar
-        open={openSnackbar}
-        autoHideDuration={6000}
-        onClose={handleClose}
-      >
-        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          {message}
-        </Alert>
-      </Snackbar>
-    );
-  };
 
   return (
     <Container

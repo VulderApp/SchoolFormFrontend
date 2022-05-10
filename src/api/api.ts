@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 
 const baseUrl =
   process.env.NODE_ENV === "development"
@@ -10,18 +10,17 @@ export const submitSchoolForm = async (
   schoolName: string,
   schoolWebsiteUrl: string,
   schoolTimetableUrl: string
-): Promise<number> => {
-  const response = await axios.request({
-    method: "POST",
-    url: "/form/submit",
-    baseURL: baseUrl,
-    data: {
-      email,
-      schoolName,
-      schoolWebsiteUrl,
-      schoolTimetableUrl,
-    },
-  });
-
-  return response.status;
-};
+): Promise<AxiosResponse | string> =>
+  await axios
+    .request({
+      method: "POST",
+      url: "/form/submit",
+      baseURL: baseUrl,
+      data: {
+        email,
+        schoolName,
+        schoolWebsiteUrl,
+        schoolTimetableUrl,
+      },
+    })
+    .catch<string>((err: AxiosError) => err.message);
