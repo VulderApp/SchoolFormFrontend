@@ -1,0 +1,15 @@
+{
+  "registerYourSchoolTitle": "Zarejestruj szkołę",
+  "emailInputLabel": "Twój adres e-mail",
+  "schoolNameInputLabel": "Nazwa szkoły",
+  "schoolWebsiteInputLabel": "Strona szkoły (link)",
+  "schoolTimetableInputLabel": "Plan lekcji szkoły (link)",
+  "validationTooShort": "Za krótkie",
+  "validationInvalidEmail": "Niepoprawny adres email",
+  "validationInvalidURL": "Niepoprawny link",
+  "validationRequired": "Wymagane",
+  "registerButton": "Zarejestruj",
+  "backToVulder": "Wróć do aplikacji",
+  "completeSubmitTitle": "Dzięki za zgłoszenie",
+  "completeSubmitMessage": "Teraz musimy przejrzeć twoje zgłoszenie, więc oczekuj od nas maila"
+}

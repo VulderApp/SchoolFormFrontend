@@ -1,0 +1,15 @@
+{
+  "registerYourSchoolTitle": "Register school",
+  "emailInputLabel": "Your e-mail",
+  "schoolNameInputLabel": "School name",
+  "schoolWebsiteInputLabel": "School website (link)",
+  "schoolTimetableInputLabel": "School timetable (link)",
+  "validationTooShort": "Too short",
+  "validationInvalidEmail": "Invalid email",
+  "validationInvalidURL": "Invalid URL",
+  "validationRequired": "Required",
+  "registerButton": "Register",
+  "backToVulder": "Back to application",
+  "completeSubmitTitle": "Thanks for submitting",
+  "completeSubmitMessage": "Now, we must review your form, so wait e-mail from us"
+}
