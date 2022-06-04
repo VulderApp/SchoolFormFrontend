@@ -5,6 +5,7 @@ import Complete from "./view/Complete";
 import { Container, Card, CardContent } from "@mui/material";
 import { RecoilRoot } from "recoil";
 import { SnackbarError } from "./components/root/SnackbarError";
+import Footer from "./components/root/Footer";
 
 const App = (): ReactElement => {
   return (
@@ -31,6 +32,7 @@ const App = (): ReactElement => {
           </Card>
         </Container>
         <SnackbarError />
+        <Footer />
       </BrowserRouter>
     </RecoilRoot>
   );
