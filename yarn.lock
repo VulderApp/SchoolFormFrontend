@@ -2277,12 +2277,13 @@
     "@mui/utils" "^5.7.0"
     prop-types "^15.8.1"
 
-"@mui/styled-engine-sc@^5.6.1":
-  version "5.6.1"
-  resolved "https://registry.yarnpkg.com/@mui/styled-engine-sc/-/styled-engine-sc-5.6.1.tgz#d9505c005eeefa5c7d7ef9c03e63324db889ee09"
-  integrity sha512-BMY5Pb8YgOxvvwg9s6mPeDgzha4244/KgRmHvTVPBmvqypbiLPApR6SNyYON+1/3kLHt3TpmxrlRY3jPiZF2QQ==
+"@mui/styled-engine-sc@^5.9.3":
+  version "5.9.3"
+  resolved "https://registry.yarnpkg.com/@mui/styled-engine-sc/-/styled-engine-sc-5.9.3.tgz#e287fad4c1c42eea96e592301dec0a0fa7cc38c7"
+  integrity sha512-hpKZM+0SH1Vv0r2OsLgp9aH/3CwUjXoPJDAJXFaWnjC70zAOFxX5hUL/5OY6gSw9+vdjcSr7N0PopwiPXBxBKQ==
   dependencies:
-    prop-types "^15.7.2"
+    "@babel/runtime" "^7.17.2"
+    prop-types "^15.8.1"
 
 "@mui/styled-engine@^5.7.0":
   version "5.7.0"
@@ -8459,7 +8460,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
